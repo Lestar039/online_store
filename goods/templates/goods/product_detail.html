@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ product.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+	<h1>{{ product.title }}</h1>
+	<p><strong>Категория: </strong>{{ product.category }}</p>
+	<p><strong>Бренд: </strong>{{ product.brand }}</p>
+	<p><img src="{{ product.image.url }}" style="width: 80%;"></p>
+	<p><strong>Описание: </strong>{{ product.description }}</p>
+	<p style="font-size: 25px;">Цена: <strong>{{ product.price }}</strong></p>
+
+	<form action="{% url 'cart:cart_add' product.id %}" method="post">
+		{% csrf_token %}
+        {{ cart_product_form }}
+		<button class="btn btn-danger">Добавить в корзину</button>
+	</form>
+{% endblock %}

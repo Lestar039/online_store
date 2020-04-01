@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ category.name }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+	<h2>{{ category.name }}</h2>
+	<hr>
+	{{ category.description }}
+	<hr>
+	{% for product in products_of_category %}
+		<p><img src="{{ product.image.url }}" style="width: 80%;"></p>
+		<h3><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h3>
+		<p style="font-size: 25px;">Цена: <strong>{{ product.price }}</strong></p>
+		<p><a href="#"><button class="btn btn-danger">Добавить в корзину</button></a></p>
+	<hr>
+	{% endfor %}
+
+{% endblock %}
