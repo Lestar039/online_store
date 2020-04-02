@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<h1>Оформление заказа</h1>
+
+<div class="order-info">
+    <h3>Ваш заказ</h3>
+    <ul>
+        {% for item in cart %}
+        <li>
+            {{ item.quantity }}x {{ item.product.title }}
+            <span>${{ item.total_price }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ cart.get_total_price }}</p>
+</div>
+
+<form action="." method="post" class="order-form">
+    {{ form.as_p }}
+
+     <button type="submit" class="btn btn-danger">Купить</button>
+    {% csrf_token %}
+
+</form>
+{% endblock %}
+

@@ -14,7 +14,7 @@
 		<p><img src="{{ product.image.url }}" style="width: 80%;"></p>
 		<h3><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h3>
 		<p style="font-size: 25px;">Цена: <strong>{{ product.price }}</strong></p>
-		<p><a href="#"><button class="btn btn-danger">Добавить в корзину</button></a></p>
+		<p><a href="{{ product.get_absolute_url }}"><button class="btn btn-danger">Купить</button></a></p>
 	<hr>
 	{% endfor %}
 

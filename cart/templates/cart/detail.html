@@ -23,7 +23,7 @@
     {% for item in cart %}
     {% with product=item.product %}
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">-</th>
       <td class="table-success">
           <a href="{{ product.get_absolute_url }}">
                 <img src="{% if product.image %}
@@ -33,16 +33,18 @@
                           {% endif %}" class="img-thumbnail">
             </a>
       </td>
+      <td class="table-success">{{ product.title }}</td>
       <td class="table-success">
           <form action="{% url 'cart:cart_add' product.id %}" method="post">
                 {% csrf_token %}
                 {{ item.update_quantity_form.quantity }}
                 {{ item.update_quantity_form.update }}
-                <input type="submit" value="Обновить">
+                <input type="submit" value="Обновить" class="btn btn-secondary">
           </form>
       </td>
-      <td class="table-success"><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
-      <td class="table-success">{{ product.title }}</td>
+      <td class="table-success">
+          <a href="{% url 'cart:cart_remove' product.id %}" class="btn btn-danger">Удалить</a>
+      </td>
       <td class="table-success">${{ item.price }}</td>
       <td class="table-info">${{ item.total_price }}</td>
     </tr>
@@ -59,8 +61,8 @@
 </table>
 
 <p class="text-right">
-    <a href="{% url 'index_goods_url' %}" class="button light">Продолжить покупки</a>
-    <a href="#" class="button">Оформить заказ</a>
+    <a href="{% url 'index_goods_url' %}" class="btn btn-success">Продолжить покупки</a>
+    <a href="{% url 'orders:order_create' %}" class="btn btn-primary">Оформить заказ</a>
 </p>
 
 {% endblock %}

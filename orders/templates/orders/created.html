@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Спасибо{% endblock %}
+
+{% block content %}
+
+    <h1>Спасибо!</h1>
+    <br>
+    <h4>Ваш заказ №<strong>{{ order.id }}</strong> был успешно оформлен.</h4>
+<br>
+<br>
+    <a href="{% url 'index_goods_url' %}" class="btn btn-link">Вернуться на главную страницу</a>
+
+{% endblock %}

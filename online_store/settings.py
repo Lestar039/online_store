@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'goods',
     'cart',
+    'orders',
 
     'allauth',
     'allauth.account',
@@ -132,6 +133,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# Номер корзины
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
