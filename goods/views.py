@@ -3,7 +3,6 @@ from .models import Category, Product
 from cart.forms import CartAddProductForm
 
 
-# Create your views here.
 def index_goods(request):
     """
     Main page.
@@ -27,7 +26,6 @@ def product_detail(request, id, slug):
 
     product = get_object_or_404(Product, id=id, slug__iexact=slug, available=True)
     cart_product_form = CartAddProductForm()
-    # product = Product.objects.get(slug__iexact=slug)
     context = {
         'product': product,
         'categories': categories,
